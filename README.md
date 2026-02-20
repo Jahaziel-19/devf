@@ -1,12 +1,12 @@
 # 🖊️ Office Express — Tienda de Papelería en Línea
 
-Página web de simulación de una tienda de papelería desarrollada con **HTML5**, **CSS3** y **Bootstrap 5** como proyecto final del curso de Desarrollo Web Básico.
+Página web de simulación de una tienda de papelería desarrollada con **HTML5**, **CSS3** y **Bootstrap 5** como proyecto final del curso de Course Frontend de DEVF.
 
 ---
 
 ## 🌐 Demo en vivo
 
-🔗 [Ver página en GitHub Pages](https://TU-USUARIO.github.io/office-express/)
+🔗 [Ver página en GitHub Pages](https://Jahaziel-19.github.io/office-express/)
 
 ---
 
@@ -60,7 +60,7 @@ git init
 git add .
 git commit -m "primer commit: página Office Express"
 git branch -M main
-git remote add origin https://github.com/TU-USUARIO/office-express.git
+git remote add origin https://github.com/Jahaziel-19/office-express.git
 git push -u origin main
 ```
 
@@ -69,9 +69,8 @@ git push -u origin main
 1. Ve a tu repositorio → **Settings → Pages**
 2. En **Source** selecciona rama `main` y carpeta `/ (root)`
 3. Haz clic en **Save**
-4. Tu página estará disponible en `https://TU-USUARIO.github.io/office-express/`
+4. Tu página estará disponible en `https://Jahaziel-19.github.io/office-express/`
 
-> ⚠️ Reemplaza `TU-USUARIO` con tu nombre de usuario de GitHub en los enlaces de arriba.
 
 ---
 
@@ -87,5 +86,5 @@ git push -u origin main
 
 ## 👤 Autor
 
-Desarrollado por **[Tu Nombre]**  
-Curso: Desarrollo Web Básico — HTML y GitHub Pages
+Desarrollado por **[Jahaziel Vázquez]**  
+Curso: Course Frontend de DEVF
