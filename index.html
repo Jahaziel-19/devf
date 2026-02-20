@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Office Express | Papelería</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Google Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <!-- Google Fonts: Gill Sans equivalente + variaciones -->
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,700;1,700&family=Nunito:wght@400;700;900&family=Oswald:wght@700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --azul-oscuro: #0033A0;
+      --azul-medio: #0057C8;
+      --amarillo: #FFD700;
+      --rojo: #E02020;
+      --blanco: #ffffff;
+    }
+
+    body {
+      font-family: 'Cabin', 'Gill Sans', sans-serif;
+    }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      background-color: var(--azul-oscuro) !important;
+      border-bottom: 4px solid var(--amarillo);
+    }
+    .navbar-brand {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.6rem;
+      color: var(--blanco) !important;
+      line-height: 1;
+    }
+    .navbar-brand .office { color: var(--blanco); }
+    .navbar-brand .express { color: var(--amarillo); font-style: italic; }
+    .nav-link { color: rgba(255,255,255,0.85) !important; font-weight: 600; }
+    .nav-link:hover { color: var(--amarillo) !important; }
+    .navbar-toggler { border-color: var(--amarillo); }
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,215,0,1)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+    .material-icons.nav-material { font-size: 1.4rem; color: rgba(255,255,255,0.85); cursor: pointer; }
+    .material-icons.nav-material:hover { color: var(--amarillo); }
+
+    /* ── HERO ── */
+    .hero {
+      background: url('https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=1400&q=80') center/cover no-repeat;
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+    }
+    .hero-overlay {
+      background: linear-gradient(to right, rgba(0,30,120,0.88) 50%, rgba(0,30,120,0.4));
+      width: 100%;
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+    }
+    .hero h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 3rem;
+      color: var(--blanco);
+    }
+    .hero h1 span { color: var(--amarillo); }
+    .hero p { font-family: 'Nunito', sans-serif; color: rgba(255,255,255,0.9); }
+    .btn-amarillo {
+      background-color: var(--amarillo);
+      color: var(--azul-oscuro);
+      font-weight: 700;
+      border: none;
+    }
+    .btn-amarillo:hover { background-color: #e6c200; color: var(--azul-oscuro); }
+
+    /* ── BANNER CATEGORIAS ── */
+    .banner-cats {
+      background-color: var(--azul-medio);
+      padding: 0.6rem 0;
+    }
+    .banner-cats .cat-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .banner-cats .cat-item:hover { color: var(--amarillo); }
+    .banner-cats .material-icons { font-size: 1.1rem; }
+
+    /* ── SECCIÓN TITLES ── */
+    .section-title {
+      font-family: 'Oswald', sans-serif;
+      color: var(--azul-oscuro);
+      border-left: 5px solid var(--amarillo);
+      padding-left: 0.7rem;
+    }
+
+    /* ── CATEGORY CARDS ── */
+    .cat-card {
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      background: #fff;
+    }
+    .cat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 18px rgba(0,51,160,0.15);
+    }
+    .cat-icon-wrap {
+      width: 56px; height: 56px;
+      background-color: var(--azul-oscuro);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 0.8rem;
+    }
+    .cat-icon-wrap .material-icons { color: var(--amarillo); font-size: 1.6rem; }
+    .cat-card h5 { font-family: 'Nunito', sans-serif; font-weight: 700; color: var(--azul-oscuro); }
+    .cat-card p { font-size: 0.8rem; color: #6c757d; }
+
+    /* ── PRODUCT CARDS ── */
+    .product-img { height: 200px; object-fit: cover; }
+    .card-title { font-family: 'Nunito', sans-serif; font-weight: 700; }
+    .precio { color: var(--azul-oscuro); font-weight: 800; font-size: 1.1rem; }
+    .btn-agregar {
+      background-color: var(--azul-oscuro);
+      color: #fff;
+      border: none;
+      font-weight: 700;
+      display: flex; align-items: center; gap: 0.3rem;
+      justify-content: center;
+    }
+    .btn-agregar:hover { background-color: var(--azul-medio); color: #fff; }
+
+    /* ── NEWSLETTER ── */
+    .newsletter { background-color: var(--azul-oscuro); }
+    .newsletter h2 { font-family: 'Oswald', sans-serif; color: var(--amarillo); }
+    .newsletter p { color: rgba(255,255,255,0.8); }
+
+    /* ── CONTACTO ── */
+    .contact-icon-wrap {
+      width: 44px; height: 44px;
+      background: var(--azul-oscuro);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-icon-wrap .material-icons { color: var(--amarillo); font-size: 1.2rem; }
+
+    /* ── FOOTER ── */
+    footer { background-color: #001a6e; color: #adb5bd; }
+    footer .brand-footer {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.4rem;
+      color: #fff;
+    }
+    footer .brand-footer span { color: var(--amarillo); font-style: italic; }
+    footer a { color: #adb5bd; text-decoration: none; }
+    footer a:hover { color: var(--amarillo); }
+    .footer-divider { border-color: rgba(255,255,255,0.1); }
+    .social-btn {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center;
+      color: #adb5bd;
+      transition: background 0.2s, color 0.2s;
+    }
+    .social-btn:hover { background: var(--amarillo); color: var(--azul-oscuro); border-color: var(--amarillo); }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <span class="office">Office </span><span class="express">Express</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav mx-auto gap-3">
+          <li class="nav-item"><a class="nav-link" href="#categorias">Papelería</a></li>
+          <li class="nav-item"><a class="nav-link" href="#categorias">Impresiones</a></li>
+          <li class="nav-item"><a class="nav-link" href="#productos">Copias y más</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+        </ul>
+        <div class="d-flex gap-3 align-items-center">
+          <span class="material-icons nav-material">search</span>
+          <span class="material-icons nav-material">favorite_border</span>
+          <span class="material-icons nav-material">shopping_cart</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BANNER CATEGORÍAS -->
+  <div class="banner-cats">
+    <div class="container d-flex gap-4 flex-wrap py-1">
+      <div class="cat-item">
+        <span class="material-icons">edit</span> Papelería
+      </div>
+      <div class="cat-item">
+        <span class="material-icons">print</span> Impresiones
+      </div>
+      <div class="cat-item">
+        <span class="material-icons">content_copy</span> Copias y más
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-overlay">
+      <div class="container text-white">
+        <p class="mb-1" style="font-family:'Nunito',sans-serif; color:var(--amarillo); font-weight:700; letter-spacing:0.1em; text-transform:uppercase; font-size:0.85rem;">
+          Práctica y en un solo lugar...
+        </p>
+        <h1>Todo para tu <span>oficina</span><br>y escuela</h1>
+        <p class="lead mb-4" style="max-width:480px;">
+          Papelería, impresiones, copias y mucho más. Encuentra todo lo que necesitas en Office Express.
+        </p>
+        <a href="#productos" class="btn btn-amarillo me-2 px-4">Ver productos</a>
+        <a href="#contacto" class="btn btn-outline-light px-4">Contáctanos</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CATEGORÍAS -->
+  <section class="py-5 bg-light" id="categorias">
+    <div class="container">
+      <h2 class="section-title mb-4">Nuestros Servicios</h2>
+      <div class="row g-3">
+
+        <div class="col-6 col-md-3">
+          <div class="cat-card card text-center p-4 h-100">
+            <div class="cat-icon-wrap"><span class="material-icons">edit_note</span></div>
+            <h5>Papelería</h5>
+            <p>Cuadernos, plumas, lápices y más</p>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+          <div class="cat-card card text-center p-4 h-100">
+            <div class="cat-icon-wrap"><span class="material-icons">print</span></div>
+            <h5>Impresiones</h5>
+            <p>Color, blanco y negro, tamaños variados</p>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+          <div class="cat-card card text-center p-4 h-100">
+            <div class="cat-icon-wrap"><span class="material-icons">content_copy</span></div>
+            <h5>Copias</h5>
+            <p>Fotocopiado rápido y económico</p>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+          <div class="cat-card card text-center p-4 h-100">
+            <div class="cat-icon-wrap"><span class="material-icons">more_horiz</span></div>
+            <h5>Y más...</h5>
+            <p>Encuadernación, plastificado, sellos</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTOS -->
+  <section class="py-5" id="productos">
+    <div class="container">
+      <h2 class="section-title mb-4">Productos Destacados</h2>
+      <div class="row g-4">
+
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="card h-100 border-0 shadow-sm">
+            <span class="badge bg-dark position-absolute m-2">Nuevo</span>
+            <img src="https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=400&q=80"
+                 class="card-img-top product-img"
+                 alt="Pluma fuente minimalista negra con tinta dorada sobre escritorio" />
+            <div class="card-body">
+              <h5 class="card-title">Pluma Fuente Profesional</h5>
+              <p class="text-muted small">Acabado negro mate con punta de iridio.</p>
+              <p class="precio">$45.00 MXN</p>
+              <button class="btn btn-agregar btn-sm w-100">
+                <span class="material-icons" style="font-size:1rem">add_shopping_cart</span> Agregar
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="card h-100 border-0 shadow-sm">
+            <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&q=80"
+                 class="card-img-top product-img"
+                 alt="Cuaderno punteado A5 tapa dura sobre fondo beige" />
+            <div class="card-body">
+              <h5 class="card-title">Cuaderno Punteado A5</h5>
+              <p class="text-muted small">160 GSM ideal para bullet journal.</p>
+              <p class="precio">$28.00 MXN</p>
+              <button class="btn btn-agregar btn-sm w-100">
+                <span class="material-icons" style="font-size:1rem">add_shopping_cart</span> Agregar
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="card h-100 border-0 shadow-sm">
+            <span class="badge bg-danger position-absolute m-2">Oferta</span>
+            <img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=400&q=80"
+                 class="card-img-top product-img"
+                 alt="Set de marcadores pastel de colores sobre fondo rosa" />
+            <div class="card-body">
+              <h5 class="card-title">Set Marcadores Pastel</h5>
+              <p class="text-muted small">6 colores suaves de secado rápido.</p>
+              <p class="precio">$12.50 MXN</p>
+              <button class="btn btn-agregar btn-sm w-100">
+                <span class="material-icons" style="font-size:1rem">add_shopping_cart</span> Agregar
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="card h-100 border-0 shadow-sm">
+            <img src="https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=400&q=80"
+                 class="card-img-top product-img"
+                 alt="Agenda semanal de piel abierta mostrando páginas de planificación" />
+            <div class="card-body">
+              <h5 class="card-title">Agenda Semanal de Piel</h5>
+              <p class="text-muted small">Edición 2025 con páginas de seguimiento.</p>
+              <p class="precio">$34.00 MXN</p>
+              <button class="btn btn-agregar btn-sm w-100">
+                <span class="material-icons" style="font-size:1rem">add_shopping_cart</span> Agregar
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter py-5">
+    <div class="container text-center">
+      <span class="material-icons text-white mb-2" style="font-size:2.5rem">mail_outline</span>
+      <h2 class="mb-2">10% de descuento en tu primera compra</h2>
+      <p class="mb-4">Suscríbete y entérate de promociones, nuevos productos y más.</p>
+      <form class="d-flex justify-content-center gap-2 flex-wrap" onsubmit="return false;">
+        <label for="nl-email" class="visually-hidden">Correo electrónico</label>
+        <input type="email" id="nl-email" name="nl-email" class="form-control w-auto" placeholder="tu@correo.com" style="min-width:240px;" />
+        <button type="submit" class="btn btn-amarillo">Suscribirme</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="py-5 bg-light" id="contacto">
+    <div class="container">
+      <div class="row g-5 align-items-start">
+
+        <!-- Info de contacto -->
+        <div class="col-12 col-md-5">
+          <h2 class="section-title mb-4">¿Cómo encontrarnos?</h2>
+          <div class="d-flex gap-3 mb-3">
+            <div class="contact-icon-wrap"><span class="material-icons">location_on</span></div>
+            <div>
+              <p class="fw-bold mb-0">Dirección</p>
+              <p class="text-muted small">Blvd. 16 de Septiembre 1900, Col Centro, 75020 Oriental, Pue.</p>
+            </div>
+          </div>
+          <div class="d-flex gap-3 mb-3">
+            <div class="contact-icon-wrap"><span class="material-icons">schedule</span></div>
+            <div>
+              <p class="fw-bold mb-0">Horario</p>
+              <p class="text-muted small">Lun–Vie: 9am–8pm | Sáb: 9am–5pm</p>
+            </div>
+          </div>
+          <div class="d-flex gap-3 mb-3">
+            <div class="contact-icon-wrap"><span class="material-icons">phone</span></div>
+            <div>
+              <p class="fw-bold mb-0">Teléfono</p>
+              <p class="text-muted small">222 123 4567</p>
+            </div>
+          </div>
+          <div class="d-flex gap-3">
+            <div class="contact-icon-wrap"><span class="material-icons">email</span></div>
+            <div>
+              <p class="fw-bold mb-0">Correo</p>
+              <p class="text-muted small">hola@officeexpress.mx</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formulario -->
+        <div class="col-12 col-md-7">
+          <h2 class="section-title mb-4">Envíanos un mensaje</h2>
+          <form onsubmit="return false;">
+            <div class="mb-3">
+              <label for="nombre" class="form-label fw-semibold">Nombre</label>
+              <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Tu nombre completo" required />
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label fw-semibold">Correo electrónico</label>
+              <input type="email" id="email" name="email" class="form-control" placeholder="tu@correo.com" required />
+            </div>
+            <div class="mb-3">
+              <label for="asunto" class="form-label fw-semibold">Asunto</label>
+              <select id="asunto" name="asunto" class="form-select">
+                <option>Información de productos</option>
+                <option>Servicio de impresión</option>
+                <option>Cotización</option>
+                <option>Otro</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="mensaje" class="form-label fw-semibold">Mensaje</label>
+              <textarea id="mensaje" name="mensaje" class="form-control" rows="4" placeholder="Escribe tu mensaje..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-amarillo px-4">
+              <span class="material-icons" style="font-size:1rem; vertical-align:middle">send</span>
+              Enviar mensaje
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-4">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-12 col-md-4">
+          <div class="brand-footer mb-2">Office <span>Express</span></div>
+          <p class="small">Práctica y en un solo lugar. Tu papelería de confianza en Puebla desde 2005.</p>
+          <div class="d-flex gap-2 mt-3">
+            <a href="https://www.facebook.com/officeexpressoficial/" class="social-btn"><span class="material-icons" style="font-size:1.1rem">facebook</span></a>
+            
+          </div>
+        </div>
+        <div class="col-6 col-md-2">
+          <h6 class="text-white">Servicios</h6>
+          <ul class="list-unstyled small">
+            <li><a href="#">Papelería</a></li>
+            <li><a href="#">Impresiones</a></li>
+            <li><a href="#">Copias</a></li>
+            <li><a href="#">Encuadernación</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-2">
+          <h6 class="text-white">Ayuda</h6>
+          <ul class="list-unstyled small">
+            <li><a href="#">Preguntas frecuentes</a></li>
+            <li><a href="#">Envíos</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4 text-md-end">
+          <p class="small mt-md-4">© 2025 Office Express. Todos los derechos reservados.</p>
+        </div>
+      </div>
+      <hr class="footer-divider" />
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
